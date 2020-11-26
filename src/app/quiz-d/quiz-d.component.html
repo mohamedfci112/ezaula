@@ -1,0 +1,90 @@
+<section class="sec-quiz" *ngIf="question">
+  <div class="container">
+
+    <div style="margin-top: 30px;">
+      <div class="row">
+        <div class="col-xs-9 text-center">
+          <i class="fa fa-volume-up">
+            <audio controls>
+              <source src="http://ezaula.com/Backend/public/uploads/{{question.voice}}" type="audio/mpeg">
+            </audio>
+          </i>
+        </div>
+        <div class="col-xs-3 text-center">
+          <h4 class="number-text">{{current}}</h4>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div style="margin-top: 50px">
+        <div class="col-sm-9  text-center">
+          <img *ngIf="!imgDisplay" (click)="displayImage()" src="../../assets/img/d.png" class="image-grade">
+          <img *ngIf="imgDisplay" src="http://ezaula.com/Backend/public/uploads/{{question.img}}" class="image-grade">
+        </div>
+        <div class="col-sm-3 text-center">
+          <h3 class="grade-text">Grade YourSelf</h3>
+          <div class="grade-icon">
+            <i class="fa fa-check" [class.active-check]="answer=='yes'" (click)="setAnsweer('yes')"></i>
+            <i class="fa fa-close" [class.active-check]="answer=='no'" (click)="setAnsweer('no')"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Text -->
+    <div class="row">
+      <div class="col-xs-12">
+        <p class="text-choose">
+          {{question.text}}
+        </p>
+      </div>
+    </div>
+    <!-- Start-Button -->
+    <div class="row">
+      <div class="col-xs-12 text-center">
+        <button (click)="getQuizQuestion()" class="btn-start-ans">{{(answer)?'SUBMIT':'START'}}<i class="fa fa-caret-right"></i></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Section 2 -->
+<section class="sec-result" style="background-color:#f0f1f3" *ngIf="finish">
+  <div class="container">
+    <div class="box-result">
+      <div class="row">
+        <div class="col-md-4">
+          <button class="btn-restart" [class.wrong]="pass==0" style="background: #e75140;">Restrat Quiz<svg xmlns="http://www.w3.org/2000/svg"
+              x="0px" y="0px" width="26" height="26" viewBox="0 0 224 224" style=" fill:#000000;position: absolute;left: 165px">
+              <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter"
+                stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none"
+                font-size="none" text-anchor="none" style="mix-blend-mode: normal">
+                <path d="M0,224v-224h224v224z" fill="none"></path>
+                <g fill="#ffffff">
+                  <g id="surface1">
+                    <path d="M34.50782,14l23.625,23.625c-18.42968,16.67968 -30.13282,40.63282 -30.13282,67.375c0,50.20313 40.79688,91 91,91c50.20313,0 91,-40.79687 91,-91c0,-50.20312 -40.79687,-91 -91,-91h-7v14h7c42.60157,0 77,34.39843 77,77c0,42.60157 -34.39843,77 -77,77c-42.60157,0 -77,-34.39843 -77,-77c0,-22.96875 10.11718,-43.36718 26.03125,-57.47657l15.96875,15.96875v-49.49218z"></path>
+                  </g>
+                </g>
+              </g>
+            </svg></button>
+        </div>
+        <div class="col-md-4 text-center">
+          <img src="../../assets/img/{{(pass)?'good':'bad'}}.png" style="width: 350px">
+          <h2>{{(pass?'GOOD FOR YOU !':'Try Again !')}}</h2>
+          <h2 style="font-weight: bold;font-size: 50px">{{grade}}%</h2>
+        </div>
+
+        <div class="col-md-4 text-center">
+          <div style="margin-top: 60px">
+            <p class="text-correct">correct</p> <span class="span-correct"> {{total_correct}}</span>
+            <div style="margin-top: 15px">
+              <p class="text-wrong">wrong</p> <span class="span-wrong"> {{total-total_correct}}</span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>

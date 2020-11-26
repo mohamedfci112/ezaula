@@ -1,0 +1,236 @@
+<section class="section-data">
+  <div class="container">
+    <div class="row">
+      <div class=" card-personal">
+        <div class="card-body">
+          <div class="add-child-img text-center">
+            <i class="fa fa-plus fa-2x" (click)='openModal(HeaderModal)' style="background: #ffbd0a"></i>
+            <img src="./assets/img/user.png" style="background: #a6c437;">
+            <span class="login100-form-title p-t-20 p-b-45" style="line-height: 2">
+              Sign Up
+            </span>
+            <p class="login100-form-title2"> WITH EZAULA </p>
+          </div>
+          <form class="form-inline form-ge" (ngSubmit)="submitForm()" [formGroup]="registerForm">
+            <div class="row">
+              <div class="col-xs-12 col-md-6 text-center col-form">
+                <input class="form-general" type="text" required formControlName="firstname" name="firstname"
+                  placeholder="First Name *" />
+                <span class="focus-input100"></span>
+                <span class="symbol-input100" style="left: 73%">
+                  <i class="fa fa-user"></i>
+                </span>
+                <div class="validation-errors">
+                  <ng-container *ngFor="let validation of validation_messages.firstname">
+                    <div class="error-message"
+                      *ngIf="registerForm.get('firstname').hasError(validation.type) && (registerForm.get('firstname').dirty || registerForm.get('password').touched)">
+                      {{ validation.message }}
+                    </div>
+                  </ng-container>
+                </div>
+              </div>
+
+              <div class="col-xs-12 col-md-6 text-center col-form">
+                <input class="form-general" type="text" required formControlName="lastname" name="lastname"
+                  placeholder="Last Name *" /><br><br>
+                <span class="focus-input100"></span>
+                <span class="symbol-input100" style="left: 73%;top: -10px;">
+                  <i class="fa fa-user"></i>
+                </span>
+                <div class="validation-errors">
+                  <ng-container *ngFor="let validation of validation_messages.lastname">
+                    <div class="error-message"
+                      *ngIf="registerForm.get('lastname').hasError(validation.type) && (registerForm.get('lastname').dirty || registerForm.get('password').touched)">
+                      {{ validation.message }}
+                    </div>
+                  </ng-container>
+                </div>
+              </div>
+            </div>
+
+            <div class="row ">
+              <div class="col-xs-12 col-md-6 text-center col-form">
+                <input class="form-general" type="Password" required formControlName="password" name="password"
+                  placeholder="Password *" />
+                <span class="focus-input100"></span>
+                <span class="symbol-input100" style="left: 73%">
+                  <i class="fa fa-lock"></i>
+                </span>
+                <div class="validation-errors">
+                  <ng-container *ngFor="let validation of validation_messages.password">
+                    <div class="error-message"
+                      *ngIf="registerForm.get('password').hasError(validation.type) && (registerForm.get('password').dirty || registerForm.get('password').touched)">
+                      {{ validation.message }}
+                    </div>
+                  </ng-container>
+                </div>
+              </div>
+
+              <div class="col-xs-12 col-md-6 text-center col-form">
+                <input class="form-general" type="Password" required name="confirmation_password"
+                  formControlName="confirmation_password" placeholder="Confirm Password *" /><br><br>
+                <span class="focus-input100"></span>
+                <span class="symbol-input100" style="left: 73%;top: -10px;">
+                  <i class="fa fa-lock"></i>
+                </span>
+                <div class="validation-errors"
+                  *ngIf="registerForm.value.password !== registerForm.value.confirmation_password && (registerForm.get('confirmation_password').dirty || registerForm.get('confirmation_password').touched)">
+                  Passwords don't match.
+                </div>
+              </div>
+            </div>
+
+            <div class="row " style="margin-bottom: 15px">
+              <div class="col-xs-12 col-md-6 text-center">
+                <input class="form-general" type="email" required name="email" formControlName="email"
+                  placeholder="Email *" />
+                <span class="focus-input100"></span>
+                <span class="symbol-input100" style="left: 73%">
+                  <i class="fa fa-envelope"></i>
+                </span>
+                <div class="validation-errors">
+                  <ng-container *ngFor="let validation of validation_messages.email">
+                    <div class="error-message"
+                      *ngIf="registerForm.get('email').hasError(validation.type) && (registerForm.get('email').dirty || registerForm.get('email').touched)">
+                      {{ validation.message }}
+                    </div>
+                  </ng-container>
+                </div>
+              </div>
+              <div class="col-xs-12 col-md-6 gender-radio2 text-center">
+                <div style="margin-top: 12px">
+                  <label class="radio-inline">
+                    <input class="form-check-input" type="radio" formControlName="gender" required name="gender"
+                      id="inlineRadio1" value="0">
+                    <label class="form-check-label" for="inlineRadio1" style="color: #353949">Male</label>
+                    <input class="form-check-input" type="radio" formControlName="gender" required name="gender"
+                      id="inlineRadio2" value="1">
+                    <label class="form-check-label" for="inlineRadio2"
+                      style="color: #353949;margin-left: 30px;">Female</label>
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <div class="row" style="margin-bottom: 15px;margin-top: 30px">
+              <div class=" text-center" style="display: flex;">
+                <!-- <p class="name-parent" style="color: #353949;padding-left: 90px">Birthday</p> -->
+                <div class="col-xs-6 col-md-12" style="margin: auto;">
+                  <label class="arrow-line">
+                    <select name="years" formControlName="year" required class="select-date-parent"
+                      [class.border-error]="registerForm.get('year').invalid && registerForm.get('year').touched">
+                      <option value='null' disabled>Years *</option>
+                      <option value="1990"> 1990</option>
+                      <option value="1991"> 1991</option>
+                      <option value="1992"> 1992</option>
+                      <option value="1993"> 1993</option>
+                      <option value="1994"> 1994</option>
+                      <option value="1995"> 1995</option>
+                      <option value="1996"> 1996</option>
+                      <option value="1997"> 1997</option>
+                      <option value="1998"> 1998</option>
+                      <option value="1999"> 1999</option>
+                      <option value="2000"> 2000</option>
+                      <option value="2001"> 2001</option>
+                      <option value="2002"> 2002</option>
+                      <option value="2003"> 2003</option>
+                      <option value="2004"> 2004</option>
+                      <option value="2005"> 2005</option>
+                      <option value="2006"> 2006</option>
+                      <option value="2007"> 2007</option>
+                      <option value="2008"> 2008</option>
+                      <option value="2009"> 2009</option>
+                      <option value="2010"> 2010</option>
+                      <option value="2011"> 2011</option>
+                      <option value="2012"> 2012</option>
+                      <option value="2013"> 2013</option>
+                      <option value="2014"> 2014</option>
+                      <option value="2015"> 2015</option>
+                      <option value="2016"> 2016</option>
+                      <option value="2017"> 2017</option>
+                      <option value="2018"> 2018</option>
+                      <option value="2019"> 2019</option>
+                    </select>
+                  </label>
+                  <label class="arrow-line">
+                    <select name="month" formControlName="month" required class="select-date-parent"
+                      [class.border-error]="registerForm.get('month').invalid && registerForm.get('month').touched">
+                      <option value='null' disabled>Month *</option>
+                      <option value="January">January</option>
+                      <option value="month"> February</option>
+                      <option value="month">March</option>
+                      <option value="month"> April</option>
+                      <option value="month"> May</option>
+                      <option value="month"> June</option>
+                      <option value="month"> July</option>
+                      <option value="month"> August</option>
+                      <option value="month"> December</option>
+                    </select>
+                  </label>
+                  <label class="arrow-line">
+                    <select name="days" formControlName="day" required class="select-date-parent"
+                      [class.border-error]="registerForm.get('day').invalid && registerForm.get('day').touched">
+                      <option value='null' disabled>Days *</option>
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5">5</option>
+                      <option value="6">6</option>
+                      <option value="7">7</option>
+                      <option value="8">8</option>
+                      <option value="8">9</option>
+                      <option value="8">10</option>
+                      <option value="8">11</option>
+                      <option value="8">12</option>
+                    </select>
+                  </label>
+                </div>
+              </div>
+            </div>
+
+
+            <!-- Save-Button -->
+            <div class="row">
+              <div class="col-xs-12 text-center">
+                <button type="submit" class="btn-sign-up" [disabled]='registerForm.invalid'>SIGN UP</button>
+              </div>
+            </div>
+            <div class="text-center w-full">
+              <a class="txt2-link" [routerLink]="['/login']" data-target="_blank" style="color:#353949;line-height:1.8">
+                Already have an account?
+              </a>
+            </div>
+          </form>
+        </div>
+        <!--card body-->
+      </div>
+    </div>
+  </div>
+</section>
+<ng-template #HeaderModal>
+  <div class="modal-header">
+    <h3 class='modal-title pull-left'>Upload Profile Picture</h3>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+  <div class="">
+    <div class="imageReview col-xs-12 upload-photo-container" *ngIf="profilePic">
+      <img class='col-xs-12 form-group' [src]="profilePic" />
+    </div>
+    <div class="col-xs-12 col-sm-6 upload-photo-container">
+      <label class="upload-photo-item" for="upload-photo-header">
+        <input #fileCover type="file" accept='image/*' id="upload-photo-header" class="hiddenInput"
+          (change)="preview(fileCover.files, 'cover')" />
+      </label>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <div class="col-xs-12 col-sm-12 text-right">
+      <button type="button" class="btn-sign-up" (click)="uploadPhoto();modalRef.hide()"
+        [disabled]="disableUploadHeaderBtn">Upload</button>
+    </div>
+  </div>
+</ng-template>

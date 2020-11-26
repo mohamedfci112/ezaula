@@ -1,0 +1,134 @@
+<!-- <section class="sec-lesson">
+  <div class="text-center lesson-name">
+    <img src="../../assets/img/Quiz-icon (1).png" class="">
+    <h2 style="display: inline;padding-left: 20px">Lesson 01 Quiz A </h2>
+  </div>
+</section> -->
+<!-- Section 2 -->
+
+<section class="sec-lesson" style="background-color:#a6c437">
+  <div class="text-center lesson-name" style="padding: 60px 0;min-height: 250px">
+    <img src="./assets/img/Quiz-icon (1).png" class="img-letter-select">
+    <h2 style="display: inline;padding-left: 20px">
+      Lesson 01 Quiz B
+    </h2>
+  </div>
+</section>
+<section class="sec-result" style="background-color:#f0f1f3" *ngIf="finish">
+  <div class="container">
+    <div class="box-result">
+      <div class="row">
+        <div class="col-md-4">
+          <button class="btn-restart" [class.wrong]="pass==0" style="background: #e75140;">Restrat Quiz<svg
+              xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="26" height="26" viewBox="0 0 224 224"
+              style=" fill:#000000;position: absolute;left: 165px">
+              <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
+                stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
+                font-family="none" font-weight="none" font-size="none" text-anchor="none"
+                style="mix-blend-mode: normal">
+                <path d="M0,224v-224h224v224z" fill="none"></path>
+                <g fill="#ffffff">
+                  <g id="surface1">
+                    <path
+                      d="M34.50782,14l23.625,23.625c-18.42968,16.67968 -30.13282,40.63282 -30.13282,67.375c0,50.20313 40.79688,91 91,91c50.20313,0 91,-40.79687 91,-91c0,-50.20312 -40.79687,-91 -91,-91h-7v14h7c42.60157,0 77,34.39843 77,77c0,42.60157 -34.39843,77 -77,77c-42.60157,0 -77,-34.39843 -77,-77c0,-22.96875 10.11718,-43.36718 26.03125,-57.47657l15.96875,15.96875v-49.49218z">
+                    </path>
+                  </g>
+                </g>
+              </g>
+            </svg></button>
+        </div>
+        <div class="col-md-4 text-center">
+          <img src="./assets/img/{{(pass)?'good':'bad'}}.png" style="width: 350px">
+          <h2>{{(pass?'GOOD FOR YOU !':'Try Again !')}}</h2>
+          <h2 style="font-weight: bold;font-size: 50px">{{grade}}%</h2>
+        </div>
+
+        <div class="col-md-4 text-center">
+          <div style="margin-top: 60px">
+            <p class="text-correct">correct</p> <span class="span-correct"> {{total_correct}}</span>
+            <div style="margin-top: 15px">
+              <p class="text-wrong">wrong</p> <span class="span-wrong"> {{total-total_correct}}</span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Section 2 -->
+<section class="section-quiz-b" *ngIf='!finish'>
+  <div class="container">
+    <div class="row text-center">
+      <div class="div-match">
+        <p class="text-match">{{question?.text}}
+        </p>
+      </div>
+    </div>
+    <form name='quizBForm' (ngSubmit)='getQuizQuestion()'>
+      <div class="row text-center">
+        <div class="col-xs-1 col-xs-offset-4 left-number">
+          <ul class="list-unstyled">
+            <li><i class="fa fa-volume-up" (click)='playAudio(htmlAudioElement_1)'>
+                <audio #htmlAudioElement_1 [src]="question?.url + question?.voice1" [class]=''></audio>
+              </i>1
+              <input type="radio" required (click)='getColAMatching(getQuestPosition_1,1)' #getQuestPosition_1
+                name="audio">
+            </li>
+            <li><i class="fa fa-volume-up" (click)='playAudio(htmlAudioElement_2)'><audio #htmlAudioElement_2
+                  [src]="question?.url + question?.voice2" [class]=''></audio></i>2
+              <input type="radio" required (click)='getColAMatching(getQuestPosition_2,2)' #getQuestPosition_2
+                name="audio"></li>
+            <li><i class="fa fa-volume-up" (click)='playAudio(htmlAudioElement_3)'><audio #htmlAudioElement_3
+                  [src]="question?.url + question?.voice3" [class]=''></audio></i>3
+              <input type="radio" required (click)='getColAMatching(getQuestPosition_3,3)' #getQuestPosition_3
+                name="audio"></li>
+            <li><i class="fa fa-volume-up" (click)='playAudio(htmlAudioElement_4)'><audio #htmlAudioElement_4
+                  [src]="question?.url + question?.voice4" [class]=''></audio></i>4
+              <input type="radio" required (click)='getColAMatching(getQuestPosition_4,4)' #getQuestPosition_4
+                name="audio"></li>
+          </ul>
+        </div>
+        <div class='col-xs-2'>
+          <canvas id="myCanvas" height="260" width="250" style="height: 100% ;position: relative;right:30px;">
+          </canvas>
+        </div>
+        <div class="col-xs-2 right-match" style='text-align: left;'>
+          <ul class="list-unstyled">
+            <li>
+              <input type="radio" required (click)='getColBMatching(getAnswer_1,"img1",1)' [hidden]="!col_A_Element"
+                #getAnswer_1 name="answer"><img [src]="question?.url + question?.img1">
+            </li>
+            <li>
+              <input type="radio" required name="answer" [hidden]="!col_A_Element"
+                (click)='getColBMatching(getAnswer_2,"img2",2)' #getAnswer_2><img
+                [src]="question?.url + question?.img2">
+            </li>
+            <li>
+              <input type="radio" required name="answer" [hidden]="!col_A_Element"
+                (click)='getColBMatching(getAnswer_3,"img3",3)' #getAnswer_3><img
+                [src]="question?.url + question?.img3">
+            </li>
+            <li>
+              <input type="radio" required name="answer" [hidden]="!col_A_Element"
+                (click)='getColBMatching(getAnswer_4,"img4",4)' #getAnswer_4><img
+                [src]="question?.url + question?.img4">
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="row text-center">
+        <div class="text-check-select" style="margin-top: 10px">
+          <div class="text-center">
+            <button type="submit" class="btn-submit" style="background-color: #a6c437">
+              <span [hidden]='total==current'>Next</span>
+              <span [hidden]='total!=current'>Finish</span> <i class="fa fa-caret-right"
+                style="font-size: 25px; padding-left: 7px;"></i> </button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</section>

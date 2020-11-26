@@ -1,0 +1,10 @@
+.arrow-line{margin:5px 10px}
+.border-error{border:1px solid red!important}
+.select-date-parent{color:#353949;border:1px solid #353949}
+.validation-errors{position:absolute;left:80px;top:43px}
+label{
+    font-weight: 400;
+}
+.upload-photo-container{
+    padding-top:15px;
+}

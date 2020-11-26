@@ -1,0 +1,8 @@
+.img-answeer{display:block;width:48px;margin:0 auto}
+.img-answeer.active{background:#a6c437}
+.fa-check.active-check{
+                     border: 2px solid #788a38;
+}
+.fa-close.active-check{
+                     border: 2px solid #924941;
+}

@@ -1,0 +1,121 @@
+*{
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+#sign-box
+{
+    position: relative;
+    margin: 5% auto;
+    height: 700px;
+    width: 1000px;
+    background: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+}
+.left-box
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 40px;
+    width: 500px;
+    height: 700px;
+    background-color: #353949;
+}
+.right-box
+{
+    position: absolute;
+    top: 200px;
+    left: 600px;
+    padding: 40px;
+    width: 500px;
+    height: 700px;
+}
+.right-box h1{
+    color:  #353949;
+    position:absolute;
+    top:-100px;
+    font-weight: bold;
+}
+.up{
+
+    left: 130px;
+    position: absolute;
+    margin-top: 20px;
+}
+
+.up3{
+    display: none;
+    left: 130px;
+    position: absolute;
+    margin-top: 20px;
+}
+.up3 button{
+    margin-top: 20px;
+}
+
+
+.learner {
+    width: 300px;
+    height: 70px;
+    border: none;
+    background-color: #ffaf03;
+    text-align: center;
+    margin-bottom: 20px
+}
+.learner a{
+    text-decoration: none;
+    color: #FFF;
+    font-size: 20px;
+    font-weight: bold;
+    position: relative;
+    top:22px;
+}
+
+.teacher {
+    width: 300px;
+    height: 70px;
+    border: none;
+    background-color: #a6c437;
+    margin-bottom: 20px;
+    text-align: center;
+}
+.teacher a{
+    text-decoration: none;
+    color: #FFF;
+    font-size: 20px;
+    font-weight: bold;
+    position: relative;
+    top:22px;
+}
+.parent{
+    width: 300px;
+    height: 70px;
+    border: none;
+    background-color: #f05a21;
+    margin-bottom: 20px;
+    text-align: center;
+}
+.parent a{
+    text-decoration: none;
+    color: #FFF;
+    font-size: 20px;
+    font-weight: bold;
+    position: relative;
+    top:22px;
+}
+.validation-errors{
+    color: red;
+}
+/* input[type="password"] {
+    width: 240px;
+    text-align: center;
+    background: transparent;
+    border: 1px solid #FFF;
+    font-family: 'Play', sans-serif;
+    padding: 10px 0;
+    transition: border 0.5s;
+    outline: none;
+    color: #FFF;
+    margin-right:10px;
+} */
